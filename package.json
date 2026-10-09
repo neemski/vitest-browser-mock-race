@@ -1,0 +1,15 @@
+{
+  "name": "vitest-browser-mock-race",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate-tests.js",
+    "test": "vitest run",
+    "repro": "node scripts/repro.js"
+  },
+  "devDependencies": {
+    "@vitest/browser-playwright": "5.0.3",
+    "playwright": "1.64.0",
+    "vitest": "5.0.3"
+  }
+}

@@ -1,0 +1,21 @@
+name: Reproduce
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run generate
+      - name: Default config
+        run: node scripts/repro.js 10
+      - name: Interception kept on
+        run: node scripts/repro.js 10 --config=vitest.keep-interception.config.js
